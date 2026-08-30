@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulus Studio — Outils numériques sur mesure pour petites entreprises</title>
+<meta name="description" content="Regulus Studio conçoit des applications de gestion et des sites web sur mesure pour les petites et moyennes entreprises : caisse, stock, personnel, réservations, sites vitrines et portfolios.">
+<meta property="og:title" content="Regulus Studio — Outils numériques sur mesure">
+<meta property="og:description" content="Des applications de gestion et des sites web simples, fiables et pensés pour vous correspondre.">
+<meta property="og:image" content="assets/regulus-logo-horizontal.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fff6f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1116" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/favicon-192.png">
+<link rel="preload" as="image" href="assets/hero-background.jpg" media="(min-width: 900px)" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Baloo+2:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<noscript><style>.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}</style></noscript>
+<script>
+  try {
+    var savedTheme = localStorage.getItem("rs-theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    }
+  } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Regulus Studio",
+  "description": "Regulus Studio conçoit des applications de gestion et des sites web sur mesure pour les petites et moyennes entreprises.",
+  "image": "assets/regulus-logo-horizontal.png",
+  "email": "contact.regulusstudio@gmail.com",
+  "telephone": "+261374967622",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61593911283016"
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="brand">
+      <img src="assets/favicon-192.png" alt="" class="brand-icon" width="192" height="192">
+      <span class="brand-text">
+        <span class="brand-name">Regulus</span>
+        <span class="brand-sub">Studio</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+      <a href="#approche" data-nav-link>Approche</a>
+      <a href="#services" data-nav-link>Services</a>
+      <a href="#realisations" data-nav-link>Projets</a>
+      <a href="#faq" data-nav-link>FAQ</a>
+      <a href="#avis" data-nav-link>Avis</a>
+      <a href="#contact" data-nav-link>Contact</a>
+      <a href="#contact" class="btn btn-primary btn-small nav-cta">Discutons de votre projet</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Activer le thème sombre" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">Studio de développement</p>
+        <h1>Des outils numériques <em>sur mesure</em>, pour faire grandir votre petite entreprise</h1>
+        <p class="hero-lead">Regulus Studio conçoit des applications de gestion (caisse, stock, personnel, réservations…) ainsi que des sites web vitrines et portfolios, simples, fiables et pensés pour vous correspondre.</p>
+
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Discutons de votre projet <span aria-hidden="true">→</span></a>
+          <a href="#realisations" class="btn btn-outline">Voir nos projets</a>
+        </div>
+
+        <ul class="trust-badges">
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Réalisation rapide, sans sacrifier la qualité</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 14.2 9 20.6 9.2 15.5 13.1 17.3 19.3 12 15.7 6.7 19.3 8.5 13.1 3.4 9.2 9.8 9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Un service de qualité, à votre écoute</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Sécurité &amp; confidentialité prises au sérieux</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CA VOUS PARLE -->
+  <section class="section" id="pain-points">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Ça vous parle ?</p>
+        <h2>Des situations qu'on entend souvent</h2>
+      </div>
+
+      <div class="grid grid-3 reveal-stagger">
+        <div class="card pain-card">
+          <span class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5c0-1.1.9-2 2-2h1.5a1 1 0 0 1 1 .8l1 4a1 1 0 0 1-.4 1L7.5 10a12 12 0 0 0 6.5 6.5l1.2-1.6a1 1 0 0 1 1-.4l4 1a1 1 0 0 1 .8 1V18c0 1.1-.9 2-2 2h-1C10.6 20 4 13.4 4 6V5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          <p class="desktop-text">Vendredi soir, service complet. Un client rappelle pour savoir où en est sa commande. Vous feuilletez le cahier — rien. Personne ne se souvient.</p>
+          <p class="mobile-text">Vendredi soir, service complet. Un client rappelle pour savoir où en est sa commande. Vous feuilletez le cahier — rien.</p>
+        </div>
+        <div class="card pain-card">
+          <span class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8h6M9 12h6M9 16h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <p class="desktop-text">Qui a cotisé ce mois-ci ? La réponse est griffonnée dans un carnet — qui se perd, se salit, et ne convainc personne en cas de désaccord.</p>
+          <p class="mobile-text">Qui a cotisé ce mois-ci ? La réponse est griffonnée dans un carnet — qui se perd et ne convainc personne en cas de désaccord.</p>
+        </div>
+        <div class="card pain-card">
+          <span class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <p class="desktop-text">Un concurrent ouvre une page Facebook, prend des commandes en ligne, répond en quelques minutes. Vous, vous répondez encore au téléphone, quand le réseau le permet.</p>
+          <p class="mobile-text">Un concurrent prend des commandes en ligne et répond en minutes. Vous répondez encore au téléphone, quand le réseau le permet.</p>
+        </div>
+      </div>
+
+      <p class="section-note">Si une de ces situations vous parle, on peut probablement vous faire gagner du temps — <a href="#contact">parlons-en</a>.</p>
+    </div>
+  </section>
+
+  <!-- NOTRE APPROCHE -->
+  <section class="section section-alt" id="approche">
+    <div class="container">
+      <div class="section-head centered reveal">
+        <p class="eyebrow">Notre approche</p>
+        <h2>Compris avant d'être réalisé</h2>
+        <p class="section-lead desktop-text">Chaque projet part d'une vraie conversation sur votre quotidien — pas d'un modèle tout fait. La réalisation va vite, mais tout ce qui touche à vos données et à votre argent est vérifié par un expert avant d'être livré.</p>
+        <p class="section-lead mobile-text">Chaque projet part d'une vraie conversation sur votre quotidien. La réalisation va vite, mais tout ce qui touche à vos données et à votre argent est vérifié par un expert.</p>
+      </div>
+
+      <ul class="pill-list reveal-stagger">
+        <li><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 4v3M16 4v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Cadré avec vous</li>
+        <li><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="m8.5 12.5 2.3 2.3L16 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Vérifié par un expert</li>
+        <li><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Adapté à vos besoins</li>
+      </ul>
+
+      <div class="timeline reveal-stagger">
+        <div class="timeline-step">
+          <span class="timeline-number">1</span>
+          <h3>On discute</h3>
+          <p>De votre quotidien, vos blocages, vos priorités — pas d'un modèle générique.</p>
+        </div>
+        <div class="timeline-step">
+          <span class="timeline-number">2</span>
+          <h3>On propose</h3>
+          <p>Un plan clair : ce qui sera fait, dans quel ordre, et pourquoi.</p>
+        </div>
+        <div class="timeline-step">
+          <span class="timeline-number">3</span>
+          <h3>On réalise</h3>
+          <p>Avec des points d'étape réguliers pour ajuster en cours de route.</p>
+        </div>
+        <div class="timeline-step">
+          <span class="timeline-number">4</span>
+          <h3>On accompagne</h3>
+          <p>Livraison, prise en main, et suivi après le lancement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head centered reveal">
+        <p class="eyebrow">Ce que nous proposons</p>
+        <h2>Des services pensés pour les PME</h2>
+        <p class="section-lead">Du premier écran au support après lancement.</p>
+      </div>
+
+      <div class="grid grid-4 reveal-stagger">
+        <div class="card service-card">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>Applications de gestion sur mesure</h3>
+          <p class="desktop-text">Point de vente, stocks, personnel, facturation, tableaux de bord : un outil unique adapté à votre activité.</p>
+          <p class="mobile-text">Point de vente, stocks, personnel, facturation, tableaux de bord.</p>
+        </div>
+        <div class="card service-card">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>Sites vitrines &amp; portfolios</h3>
+          <p class="desktop-text">Des sites clairs, rapides et adaptés aux mobiles, pour présenter votre activité, vos services ou vos réalisations.</p>
+          <p class="mobile-text">Des sites clairs et rapides pour présenter votre activité et vos réalisations.</p>
+        </div>
+        <div class="card service-card">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.5-2-3.4-2.3.8a7.6 7.6 0 0 0-2.6-1.5L14 2.5h-4l-.5 2.4a7.6 7.6 0 0 0-2.6 1.5l-2.3-.8-2 3.4 2 1.5a7.6 7.6 0 0 0 0 3l-2 1.5 2 3.4 2.3-.8c.8.6 1.6 1.1 2.6 1.5l.5 2.4h4l.5-2.4a7.6 7.6 0 0 0 2.6-1.5l2.3.8 2-3.4-2-1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <h3>Automatisation &amp; outils internes</h3>
+          <p class="desktop-text">Réduisez les tâches répétitives : rapports automatiques, alertes de stock, exports comptables.</p>
+          <p class="mobile-text">Rapports automatiques, alertes de stock, exports comptables.</p>
+        </div>
+        <div class="card service-card">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-9.5-9C1 7.7 3 4.5 6.3 4.5c2 0 3.4 1 4.7 2.7 1.3-1.7 2.7-2.7 4.7-2.7 3.3 0 5.3 3.2 3.8 7-2 4.6-9.5 9-9.5 9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+          <h3>Maintenance &amp; accompagnement</h3>
+          <p class="desktop-text">Un contrat de suivi après livraison : correctifs, évolutions, disponibilité en cas de besoin.</p>
+          <p class="mobile-text">Un contrat de suivi : correctifs, évolutions, disponibilité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS & PROTOTYPES -->
+  <section class="section section-alt" id="realisations">
+    <div class="container projects-container">
+      <div class="projects-heading reveal">
+        <div class="section-head">
+          <p class="eyebrow">Projets &amp; prototypes</p>
+          <h2>Des idées transformées en expériences concrètes</h2>
+          <p class="section-lead">Découvrez quelques prototypes conçus pour répondre à des besoins réels, de la gestion d'activité à la vente en ligne.</p>
+        </div>
+        <div class="project-controls" aria-label="Navigation des prototypes">
+          <button class="project-arrow" id="projects-prev" type="button" aria-label="Prototype précédent" aria-controls="projects-track">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="project-arrow" id="projects-next" type="button" aria-label="Prototype suivant" aria-controls="projects-track">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="projects-track reveal" id="projects-track" tabindex="0" aria-label="Prototypes Regulus Studio">
+        <article class="project-card" data-project-slide>
+          <div class="project-visual">
+            <img src="assets/Yummy_restaurant.webp" alt="Tableau de bord du prototype Yummy Restaurant" width="1852" height="965" loading="lazy" decoding="async">
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span class="tag">Prototype fonctionnel</span><span>Gestion</span></div>
+            <h3>Yummy Restaurant</h3>
+            <p>Une plateforme complète pour piloter les commandes, la salle, la cuisine, les stocks et le personnel d'un restaurant.</p>
+            <ul class="project-features">
+              <li>Point de vente &amp; plan de salle</li>
+              <li>Stocks, recettes &amp; rapports</li>
+              <li>Écran cuisine en temps réel</li>
+            </ul>
+            <span class="project-coming-soon">Démo bientôt disponible</span>
+          </div>
+        </article>
+
+        <article class="project-card" data-project-slide>
+          <div class="project-visual">
+            <img src="assets/Atelier_dore.webp" alt="Catalogue du prototype e-commerce Atelier Doré" width="1795" height="965" loading="lazy" decoding="async">
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span class="tag">Prototype fonctionnel</span><span>E-commerce</span></div>
+            <h3>Atelier Doré</h3>
+            <p>Une boutique en ligne élégante pour présenter des créations artisanales, prendre des commandes et gérer son catalogue.</p>
+            <ul class="project-features">
+              <li>Catalogue, recherche &amp; favoris</li>
+              <li>Panier &amp; suivi de commande</li>
+              <li>Tableau de bord commerçant</li>
+            </ul>
+            <span class="project-coming-soon">Démo bientôt disponible</span>
+          </div>
+        </article>
+
+        <article class="project-card" data-project-slide>
+          <div class="project-visual">
+            <img src="assets/fonctio.webp" alt="Interface du prototype d'analyse mathématique Fonctio" width="1795" height="965" loading="lazy" decoding="async">
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span class="tag">Prototype fonctionnel</span><span>Éducation</span></div>
+            <h3>Fonctio</h3>
+            <p>Un outil pédagogique qui analyse une fonction et guide l'utilisateur du domaine de définition jusqu'à la courbe.</p>
+            <ul class="project-features">
+              <li>Dérivée, signe &amp; variations</li>
+              <li>Courbe interactive</li>
+              <li>Primitive &amp; calcul d'aire</li>
+            </ul>
+            <span class="project-coming-soon">Démo bientôt disponible</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-dots" id="projects-dots" aria-label="Choisir un prototype"></div>
+    </div>
+  </section>
+
+  <!-- POURQUOI -->
+  <section class="section" id="pourquoi">
+    <div class="container">
+      <div class="section-head centered reveal">
+        <p class="eyebrow">Pourquoi Regulus Studio</p>
+        <h2>Un studio à taille humaine, une exécution rapide</h2>
+      </div>
+
+      <div class="grid grid-4 features reveal-stagger">
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <h3>Rapide</h3>
+          <p>Une réalisation rapide, sans sacrifier la qualité.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <h3>Sécurisé</h3>
+          <p class="desktop-text">Les zones sensibles sont toujours validées par un expert.</p>
+          <p class="mobile-text">Validé par un expert.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 3 7 7-9.5 9.5-7 1 1-7L14 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m13 5 6 6" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Sur mesure</h3>
+          <p class="desktop-text">Chaque projet part de votre réalité, pas d'un modèle générique.</p>
+          <p class="mobile-text">Pas un modèle générique.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 20c.8-3.6 3.4-5.5 7-5.5s6.2 1.9 7 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 4.5c1.7.4 3 1.9 3 3.7s-1.3 3.3-3 3.7M22 20c-.6-2.7-2-4.4-4.5-5.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>Accompagné</h3>
+          <p class="desktop-text">Un contact humain avant, pendant et après le projet.</p>
+          <p class="mobile-text">Avant, pendant, après.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <div class="section-head centered reveal">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Vous vous posez sûrement ces questions</h2>
+      </div>
+
+      <div class="faq-list reveal-stagger">
+        <details class="faq-item">
+          <summary>Combien de temps prend un projet ?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </summary>
+          <p class="faq-answer">Ça dépend de la complexité de l'outil, mais on privilégie une mise en route rapide avec des points d'étape réguliers plutôt qu'une seule livraison au bout de plusieurs mois.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Faut-il avoir un cahier des charges précis avant de vous contacter ?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </summary>
+          <p class="faq-answer">Non. Une idée, un besoin ou un problème rencontré au quotidien suffit pour commencer. Nous vous aidons à clarifier les priorités et à définir une solution adaptée avant le début de la réalisation.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Comment se passent le budget et le paiement ?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </summary>
+          <p class="faq-answer">On en discute ensemble dès le premier échange, selon votre budget et la taille du projet, avant de démarrer quoi que ce soit.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Faut-il des compétences techniques pour utiliser l'outil ?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </summary>
+          <p class="faq-answer">Non. Chaque outil est pensé pour être simple à prendre en main, avec un accompagnement à la mise en route.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Que se passe-t-il après la livraison ?
+            <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </summary>
+          <p class="faq-answer">Un contrat de suivi reste possible : correctifs, évolutions et disponibilité en cas de besoin, comme décrit dans nos services de maintenance.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="section review-section" id="avis">
+    <div class="container review-grid">
+      <div class="review-text reveal">
+        <p class="eyebrow">Votre expérience</p>
+        <h2>Votre avis nous aide à progresser</h2>
+        <p>Vous avez travaillé avec Regulus Studio ? Partagez votre expérience en quelques mots. Chaque retour est lu avec attention.</p>
+
+        <div class="review-note">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 14.2 9 20.6 9.2 15.5 13.1 17.3 19.3 12 15.7 6.7 19.3 8.5 13.1 3.4 9.2 9.8 9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <p>Votre avis ne sera jamais publié sans votre autorisation.</p>
+        </div>
+      </div>
+
+      <form class="contact-form review-form reveal" id="review-form" method="POST" action="https://formspree.io/f/xjyvkqwp">
+        <input type="hidden" name="form_type" value="Avis client">
+        <input type="hidden" name="_subject" value="Nouvel avis client — Regulus Studio">
+
+        <fieldset class="rating-field">
+          <legend>Votre note</legend>
+          <div class="star-rating" aria-label="Note sur 5">
+            <input type="radio" id="rating-5" name="rating" value="5" required><label for="rating-5" title="5 étoiles"><span class="sr-only">5 étoiles</span>★</label>
+            <input type="radio" id="rating-4" name="rating" value="4"><label for="rating-4" title="4 étoiles"><span class="sr-only">4 étoiles</span>★</label>
+            <input type="radio" id="rating-3" name="rating" value="3"><label for="rating-3" title="3 étoiles"><span class="sr-only">3 étoiles</span>★</label>
+            <input type="radio" id="rating-2" name="rating" value="2"><label for="rating-2" title="2 étoiles"><span class="sr-only">2 étoiles</span>★</label>
+            <input type="radio" id="rating-1" name="rating" value="1"><label for="rating-1" title="1 étoile"><span class="sr-only">1 étoile</span>★</label>
+          </div>
+        </fieldset>
+
+        <div class="review-fields">
+          <div class="field">
+            <label for="review-name">Votre nom</label>
+            <input type="text" id="review-name" name="name" placeholder="Ex. Ravaka R." autocomplete="name" maxlength="80" required>
+          </div>
+          <div class="field">
+            <label for="review-company">Entreprise</label>
+            <input type="text" id="review-company" name="company" placeholder="Facultatif" autocomplete="organization" maxlength="100">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="review-service">Service réalisé</label>
+          <input type="text" id="review-service" name="service" placeholder="Ex. Site vitrine, application de gestion" maxlength="120" required>
+        </div>
+        <div class="field">
+          <label for="review-email">Votre email <span class="label-note">— non publié</span></label>
+          <input type="email" id="review-email" name="_replyto" placeholder="vous@entreprise.com" autocomplete="email" maxlength="160" required>
+        </div>
+        <div class="field">
+          <label for="review-message">Votre avis</label>
+          <textarea id="review-message" name="message" rows="4" placeholder="Qu'avez-vous apprécié dans notre collaboration ?" maxlength="1200" required></textarea>
+        </div>
+
+        <label class="consent-field">
+          <input type="checkbox" name="publication_authorized" value="Oui">
+          <span>J'autorise Regulus Studio à publier cet avis avec mon prénom et mon entreprise.</span>
+        </label>
+
+        <div class="hp-field" aria-hidden="true">
+          <label for="review-website">Ne pas remplir</label>
+          <input type="text" id="review-website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Envoyer mon avis</button>
+        <p class="form-status" id="review-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-alt" id="contact">
+    <div class="container contact-grid">
+
+      <div class="contact-text reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Un projet en tête ?</h2>
+        <p>Parlons de votre activité et de ce qui vous ferait gagner du temps au quotidien.</p>
+
+        <ul class="contact-links">
+          <li>
+            <a href="mailto:contact.regulusstudio@gmail.com">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Écrire par email
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/261374967622" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.6-6.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 4v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 10.5c.3 2 2 3.7 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Discuter sur WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=61593911283016" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2V5.2c-.4-.05-1.5-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.9v2.4H7v3.5h2.5V21h3.6v-5.2h2.5l.4-3.5h-2.9V10c0-1 .3-1.5 1.9-1.5Z" fill="currentColor"/></svg>
+              Suivre la page Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form" method="POST" action="https://formspree.io/f/xjyvkqwp">
+        <input type="hidden" name="form_type" value="Demande de contact">
+        <input type="hidden" name="_subject" value="Nouvelle demande — Regulus Studio">
+        <div class="field">
+          <label for="company">Nom de votre entreprise</label>
+          <input type="text" id="company" name="company" placeholder="Ex. Boulangerie Ravaka" autocomplete="organization" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label for="reply-to">Votre email</label>
+          <input type="email" id="reply-to" name="_replyto" placeholder="vous@entreprise.com" autocomplete="email" maxlength="160" required>
+        </div>
+        <div class="field">
+          <label for="phone">Téléphone ou WhatsApp <span class="label-note">— facultatif</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="Ex. +261 34 00 000 00" autocomplete="tel" inputmode="tel" maxlength="30">
+        </div>
+        <div class="field">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Dites-nous ce qui vous ferait gagner du temps" maxlength="1500" required></textarea>
+        </div>
+
+        <!-- anti-spam honeypot, laissé vide par les humains -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Ne pas remplir</label>
+          <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="footer-logo">
+          <img src="assets/favicon-192.png" alt="" class="footer-logo-icon" width="192" height="192" loading="lazy" decoding="async">
+          <span>
+            <span class="footer-logo-name">Regulus</span>
+            <span class="footer-logo-sub">Studio</span>
+          </span>
+        </a>
+        <p class="footer-tagline">Des outils numériques sur mesure pour les petites et moyennes entreprises.</p>
+        <div class="footer-socials">
+          <a href="https://wa.me/261374967622" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.6-6.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 4v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 10.5c.3 2 2 3.7 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61593911283016" target="_blank" rel="noopener" aria-label="Suivre la page Facebook">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2V5.2c-.4-.05-1.5-.2-2.8-.2-2.8 0-4.7 1.7-4.7 4.9v2.4H7v3.5h2.5V21h3.6v-5.2h2.5l.4-3.5h-2.9V10c0-1 .3-1.5 1.9-1.5Z" fill="currentColor"/></svg>
+          </a>
+          <a href="mailto:contact.regulusstudio@gmail.com" aria-label="Écrire par email">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Navigation du pied de page">
+        <p class="footer-heading">Navigation</p>
+        <a href="#approche">Approche</a>
+        <a href="#services">Services</a>
+        <a href="#realisations">Projets &amp; prototypes</a>
+        <a href="#faq">FAQ</a>
+        <a href="#avis">Donner votre avis</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="footer-contact">
+        <p class="footer-heading">Contact</p>
+        <a href="mailto:contact.regulusstudio@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          contact.regulusstudio@gmail.com
+        </a>
+        <a href="https://wa.me/261374967622" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.6-6.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 4v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 10.5c.3 2 2 3.7 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="footer-year">2026</span> Regulus Studio. Tous droits réservés.</p>
+      <p class="footer-credit">Conçu avec soin.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="float-actions">
+  <a class="float-btn float-whatsapp" id="float-whatsapp" href="https://wa.me/261374967622" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.6-6.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M20 4v4h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 10.5c.3 2 2 3.7 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </a>
+  <button class="float-btn float-top" id="float-top" type="button" aria-label="Revenir en haut de la page">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
