@@ -430,13 +430,21 @@ button { font-family: inherit; }
 
 .hero-text { max-width: 620px; margin: 0; }
 
-/* Photo background: desktop only. A single soft tint fades left-to-right
-   across the whole photo — never fully opaque, so the image reads as one
-   continuous background rather than a solid block stitched to a photo —
-   just strong enough over the text column for legibility, and light enough
-   past it that the photo shows clearly. Left off below 900px: cover-cropping
-   a wide photo into a narrow portrait box would just show a random,
-   unpredictable slice of it, so mobile keeps the plain background instead. */
+/* Hero photography uses a landscape asset on desktop and a dedicated portrait
+   crop on mobile. The soft theme-aware tint keeps the copy readable in both
+   light and dark modes. */
+@media (max-width: 899px) {
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(var(--bg-rgb), 0.82) 0, rgba(var(--bg-rgb), 0.58) 62%, rgba(var(--bg-rgb), 0.16) 100%),
+      url('../assets/Background_mobile.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  .hero::before { display: none; }
+}
+
 @media (min-width: 900px) {
   .hero {
     background-image:
