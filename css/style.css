@@ -436,10 +436,10 @@ button { font-family: inherit; }
 @media (max-width: 899px) {
   .hero {
     background-image:
-      linear-gradient(180deg, rgba(var(--bg-rgb), 0.82) 0, rgba(var(--bg-rgb), 0.58) 62%, rgba(var(--bg-rgb), 0.16) 100%),
+      linear-gradient(180deg, rgba(var(--bg-rgb), 0.42) 0, rgba(var(--bg-rgb), 0.18) 58%, rgba(var(--bg-rgb), 0.06) 100%),
       url('../assets/Background_mobile.png');
     background-size: cover;
-    background-position: center top;
+    background-position: center 62%;
     background-repeat: no-repeat;
   }
   .hero::before { display: none; }
