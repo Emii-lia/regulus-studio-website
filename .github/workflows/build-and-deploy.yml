@@ -34,7 +34,7 @@ jobs:
   deploy:
     name: Deploy App to Cloudflare Pages
     needs: build
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.repository == 'niriantsoa1304/regulus-studio-website'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
