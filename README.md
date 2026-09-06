@@ -15,7 +15,7 @@ Le formulaire pointe déjà vers Formspree : `https://formspree.io/f/xjyvkqwp`.
 Pour changer de compte/formulaire, éditer l'attribut `action` du `<form id="contact-form">` dans `index.html`.
 
 ## Adresse email de contact
-Le lien « Écrire par email » utilise `contact.regulusstudio@gmail.com`.
+Le lien « Écrire par email » utilise `contact@regulus-studio.tech`.
 
 ## Déploiement (Netlify, recommandé par le cahier des charges)
 1. Créer un compte sur netlify.com
