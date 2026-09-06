@@ -165,7 +165,7 @@ button { font-family: inherit; }
   top: 0;
   z-index: 100;
   background: var(--bg);
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 2px solid var(--border-soft);
   transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 .site-header.is-scrolled { box-shadow: 0 6px 24px -18px rgba(69, 42, 56, 0.35); }
@@ -182,9 +182,11 @@ button { font-family: inherit; }
   align-items: center;
   gap: 10px;
 }
-.brand-icon { height: 40px; width: 40px; }
+.brand-icon { height: 46px; width: 46px; }
 .brand-icon, .footer-logo-icon { flex-shrink: 0; }
-.brand-wordmark, .footer-wordmark { width: 110px; height: auto; }
+.brand-wordmark, .footer-wordmark { width: 125px; height: auto; }
+.brand-wordmark { width: 105px; }
+.footer-wordmark { width: 104px; }
 .footer-wordmark { filter: brightness(0) invert(1); }
 :root[data-theme="dark"] .brand-wordmark { filter: brightness(0) invert(1); }
 @media (prefers-color-scheme: dark) {
@@ -451,15 +453,19 @@ button { font-family: inherit; }
    the copy readable in both light and dark modes. */
 @media (max-width: 899px) {
   .hero {
-    padding-bottom: calc(clamp(341px, 106.42vw, 639px) + 32px);
+    padding-top: calc(clamp(341px, 106.42vw, 639px) + 32px);
     background-image:
-      linear-gradient(180deg, rgba(var(--bg-rgb), 0.32) 0, rgba(var(--bg-rgb), 0.06) 58%, rgba(var(--bg-rgb), 0) 100%),
+      linear-gradient(0deg, rgba(var(--bg-rgb), 0.32) 0, rgba(var(--bg-rgb), 0.06) 58%, rgba(var(--bg-rgb), 0) 100%),
       url('../assets/hero-regulus-studio.svg');
     background-size: cover, min(100%, 600px) auto;
-    background-position: center 62%, center bottom;
+    background-position: center 38%, center top;
     background-repeat: no-repeat;
   }
   .hero::before { display: none; }
+  .hero-inner { text-align: center; }
+  .hero-text { margin: 0 auto; }
+  .hero-lead { margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
 }
 
 @media (min-width: 900px) {
@@ -1010,7 +1016,7 @@ button { font-family: inherit; }
   gap: 10px;
   margin-bottom: 16px;
 }
-.footer-logo-icon { height: 36px; width: 36px; border-radius: 10px; }
+.footer-logo-icon { height: 42px; width: 42px; border-radius: 10px; }
 .footer-logo-name {
   display: block;
   font-family: var(--font-serif);
@@ -1107,7 +1113,7 @@ button { font-family: inherit; }
     align-items: stretch;
     gap: 0;
     padding: 8px 20px 20px;
-    border-bottom: 1px solid var(--border-soft);
+    border-bottom: 2px solid var(--border-soft);
     box-shadow: var(--shadow-card);
     transform: translateY(-8px);
     opacity: 0;
@@ -1130,7 +1136,6 @@ button { font-family: inherit; }
 @media (max-width: 768px) {
   html { font-size: 100%; }
   .section { padding: 64px 0; }
-  .hero { padding-top: 48px; }
   .float-actions { right: 14px; bottom: 14px; }
   .float-btn { width: 48px; height: 48px; }
   .float-top { width: 40px; height: 40px; }
@@ -1139,10 +1144,7 @@ button { font-family: inherit; }
   .features.grid-4 { grid-template-columns: repeat(2, 1fr); column-gap: 16px; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
-  .hero-inner { text-align: left; }
-  .hero-lead { margin-left: 0; margin-right: 0; }
-  .hero-ctas { flex-direction: column; align-items: stretch; }
-  .hero-ctas .btn { width: 100%; }
+  .hero-ctas { flex-direction: column; align-items: center; }
   .trust-badges { flex-direction: column; align-items: stretch; }
   .trust-badges li { justify-content: flex-start; text-align: left; }
   .pill-list { flex-direction: column; align-items: stretch; }

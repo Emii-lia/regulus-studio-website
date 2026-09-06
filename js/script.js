@@ -287,6 +287,20 @@
     var status = document.getElementById(statusId);
     if (!form) return;
 
+    var emailField = form.querySelector('input[type="email"]');
+    if (emailField && status) {
+      emailField.addEventListener("invalid", function () {
+        status.textContent = "Merci de saisir une adresse email valide afin que nous puissions vous répondre.";
+        status.className = "form-status error";
+      });
+      emailField.addEventListener("input", function () {
+        if (emailField.validity.valid && status.className === "form-status error") {
+          status.textContent = "";
+          status.className = "form-status";
+        }
+      });
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -320,13 +334,21 @@
               status.textContent = successMessage;
               status.className = "form-status success";
             }
-          } else {
-            throw new Error("Erreur d'envoi");
+            return;
           }
+          return response.json().catch(function () { return null; }).then(function (data) {
+            var errors = (data && data.errors) || [];
+            var isEmailError = errors.some(function (err) {
+              return err.field === "email" || (err.message && err.message.toLowerCase().indexOf("email") !== -1);
+            });
+            throw new Error(isEmailError ? "invalid-email" : "send-failed");
+          });
         })
-        .catch(function () {
+        .catch(function (err) {
           if (status) {
-            status.textContent = "L'envoi a échoué. Réessayez ou écrivez-nous directement sur WhatsApp.";
+            status.textContent = err && err.message === "invalid-email"
+              ? "Merci de saisir une adresse email valide afin que nous puissions vous répondre."
+              : "Une erreur est survenue lors de l'envoi. Veuillez réessayer, ou nous contacter directement via WhatsApp.";
             status.className = "form-status error";
           }
         })
