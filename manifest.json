@@ -8,7 +8,10 @@
   "background_color": "#fff6f8",
   "theme_color": "#b1466f",
   "icons": [
-    { "src": "assets/favicon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "assets/Icône%20seule.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
   ]
 }

@@ -120,10 +120,9 @@
     var spyObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var link = linkById[entry.target.id];
-        if (!link) return;
         if (entry.isIntersecting) {
           navLinks.forEach(function (l) { l.classList.remove("is-active"); });
-          link.classList.add("is-active");
+          if (link) link.classList.add("is-active");
         }
       });
     }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
@@ -132,6 +131,8 @@
       var section = document.getElementById(id);
       if (section) spyObserver.observe(section);
     });
+    var heroSection = document.getElementById("top");
+    if (heroSection) spyObserver.observe(heroSection);
   }
 
   /* Reveal-on-scroll animations */
@@ -230,17 +231,6 @@
 
     updateControls();
   })();
-
-  /* Keep the FAQ concise by leaving only one answer open at a time */
-  var faqItems = document.querySelectorAll(".faq-item");
-  faqItems.forEach(function (item) {
-    item.addEventListener("toggle", function () {
-      if (!item.open) return;
-      faqItems.forEach(function (other) {
-        if (other !== item) other.open = false;
-      });
-    });
-  });
 
   /* On desktop, one vertical wheel gesture advances exactly one section. */
   (function () {
