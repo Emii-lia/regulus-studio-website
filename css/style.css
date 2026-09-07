@@ -770,9 +770,10 @@ main { overflow-wrap: anywhere; }
   border-radius: 50%;
   background: var(--primary);
   color: var(--on-primary);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 1.1rem;
+  line-height: 1;
   margin-bottom: 16px;
   box-shadow: var(--shadow-card);
 }
