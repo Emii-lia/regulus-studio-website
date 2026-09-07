@@ -24,7 +24,7 @@
   <link rel="canonical" href="https://regulus-studio.tech"/>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="assets/Icône%20seule.svg">
-  <link rel="preload" as="image" href="assets/hero-regulus-studio.svg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/illustration-dashboard-anime.svg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Baloo+2:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -178,26 +178,26 @@
         <h2>Un studio à taille humaine, une exécution rapide</h2>
       </div>
 
-      <div class="grid grid-4 features reveal-stagger">
-        <div class="feature">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+      <div class="timeline reveal-stagger">
+        <div class="timeline-step">
+          <span class="timeline-number">1</span>
           <h3>Rapide</h3>
           <p>Une réalisation rapide, sans sacrifier la qualité.</p>
         </div>
-        <div class="feature">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <div class="timeline-step">
+          <span class="timeline-number">2</span>
           <h3>Sécurisé</h3>
           <p class="desktop-text">Les zones sensibles sont toujours validées par un expert.</p>
           <p class="mobile-text">Validé par un expert.</p>
         </div>
-        <div class="feature">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 3 7 7-9.5 9.5-7 1 1-7L14 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m13 5 6 6" stroke="currentColor" stroke-width="1.8"/></svg></span>
+        <div class="timeline-step">
+          <span class="timeline-number">3</span>
           <h3>Sur mesure</h3>
           <p class="desktop-text">Chaque projet part de votre réalité, pas d'un modèle générique.</p>
           <p class="mobile-text">Pas un modèle générique.</p>
         </div>
-        <div class="feature">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 20c.8-3.6 3.4-5.5 7-5.5s6.2 1.9 7 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 4.5c1.7.4 3 1.9 3 3.7s-1.3 3.3-3 3.7M22 20c-.6-2.7-2-4.4-4.5-5.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div class="timeline-step">
+          <span class="timeline-number">4</span>
           <h3>Accompagné</h3>
           <p class="desktop-text">Un contact humain avant, pendant et après le projet.</p>
           <p class="mobile-text">Avant, pendant, après.</p>
@@ -220,7 +220,13 @@
         </div>
       </div>
 
-      <form class="contact-form review-form reveal" id="review-form" method="POST" action="https://formspree.io/f/xjyvkqwp">
+      <form class="contact-form review-form reveal" id="review-form" aria-labelledby="review-form-title" method="POST" action="https://formspree.io/f/xjyvkqwp">
+        <div class="review-form-heading">
+          <span class="review-seal" aria-hidden="true">“</span>
+          <p class="eyebrow">Le carnet des clients</p>
+          <h3 id="review-form-title">À vous la parole</h3>
+          <p>Une note, quelques mots, votre regard.</p>
+        </div>
         <input type="hidden" name="form_type" value="Avis client">
         <input type="hidden" name="_subject" value="Nouvel avis client — Regulus Studio">
 
@@ -247,16 +253,8 @@
         </div>
 
         <div class="field">
-          <label for="review-service">Service réalisé</label>
-          <input type="text" id="review-service" name="service" placeholder="Ex. Site vitrine, application de gestion" maxlength="120" required>
-        </div>
-        <div class="field">
-          <label for="review-email">Votre email <span class="label-note">— non publié</span></label>
-          <input type="email" id="review-email" name="_replyto" placeholder="vous@entreprise.com" autocomplete="email" maxlength="160" required>
-        </div>
-        <div class="field">
           <label for="review-message">Votre avis</label>
-          <textarea id="review-message" name="message" rows="4" placeholder="Qu'avez-vous apprécié dans notre collaboration ?" maxlength="1200" required></textarea>
+          <textarea id="review-message" name="message" rows="3" placeholder="Qu'avez-vous apprécié dans notre collaboration ?" maxlength="1200" required></textarea>
         </div>
 
         <label class="consent-field">
@@ -306,9 +304,16 @@
         </ul>
       </div>
 
-      <form class="contact-form reveal" id="contact-form" method="POST" action="https://formspree.io/f/xjyvkqwp">
+      <form class="contact-form project-form reveal" id="contact-form" aria-labelledby="contact-form-title" method="POST" action="https://formspree.io/f/xjyvkqwp">
+        <div class="project-form-heading">
+          <p class="eyebrow">Construisons la suite</p>
+          <h3 id="contact-form-title">Votre projet commence ici.</h3>
+          <p>Présentez-vous, puis racontez-nous votre idée.</p>
+        </div>
         <input type="hidden" name="form_type" value="Demande de contact">
         <input type="hidden" name="_subject" value="Nouvelle demande — Regulus Studio">
+        <fieldset class="project-group">
+          <legend><span aria-hidden="true">01</span> Faisons connaissance</legend>
         <div class="field">
           <label for="company">Nom de votre entreprise</label>
           <input type="text" id="company" name="company" placeholder="Ex. Boulangerie Ravaka" autocomplete="organization" maxlength="100" required>
@@ -321,10 +326,14 @@
           <label for="phone">Téléphone ou WhatsApp <span class="label-note">— facultatif</span></label>
           <input type="tel" id="phone" name="phone" placeholder="Ex. +261 34 00 000 00" autocomplete="tel" inputmode="tel" maxlength="30">
         </div>
+        </fieldset>
+        <fieldset class="project-group">
+          <legend><span aria-hidden="true">02</span> Parlons de votre idée</legend>
         <div class="field">
           <label for="message">Votre message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Dites-nous ce qui vous ferait gagner du temps" maxlength="1500" required></textarea>
+          <textarea id="message" name="message" rows="3" placeholder="Dites-nous ce qui vous ferait gagner du temps" maxlength="1500" required></textarea>
         </div>
+        </fieldset>
 
         <!-- anti-spam honeypot, laissé vide par les humains -->
         <div class="hp-field" aria-hidden="true">
