@@ -232,51 +232,6 @@
     updateControls();
   })();
 
-  /* On desktop, one vertical wheel gesture advances exactly one section. */
-  (function () {
-    var DESKTOP_MIN_WIDTH = 900;
-    var sections = Array.prototype.slice.call(document.querySelectorAll(".hero, .section, .site-footer"));
-    if (!sections.length) return;
-
-    var cooling = false;
-
-    function isDesktop() {
-      return window.innerWidth >= DESKTOP_MIN_WIDTH;
-    }
-
-    function closestIndex() {
-      var best = 0;
-      var bestDistance = Infinity;
-      sections.forEach(function (section, index) {
-        var distance = Math.abs(section.getBoundingClientRect().top);
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          best = index;
-        }
-      });
-      return best;
-    }
-
-    function goToSection(index) {
-      index = Math.max(0, Math.min(sections.length - 1, index));
-      sections[index].scrollIntoView({
-        behavior: reduceMotion ? "auto" : "smooth",
-        block: "start"
-      });
-      cooling = true;
-      window.setTimeout(function () {
-        cooling = false;
-      }, reduceMotion ? 150 : 650);
-    }
-
-    window.addEventListener("wheel", function (event) {
-      if (!isDesktop() || Math.abs(event.deltaY) < 4) return;
-      event.preventDefault();
-      if (cooling) return;
-      goToSection(closestIndex() + (event.deltaY > 0 ? 1 : -1));
-    }, { passive: false });
-  })();
-
   /* Footer copyright year */
   var footerYear = document.getElementById("footer-year");
   if (footerYear) footerYear.textContent = new Date().getFullYear();
