@@ -325,6 +325,23 @@ main { overflow-wrap: anywhere; }
 .section { padding: clamp(40px, 5vw, 72px) 0; }
 .section-alt { background: var(--bg-alt); }
 
+/* One section per screen on desktop: native scroll-snap, content centered
+   vertically inside each min-height:100vh section. Left off on mobile since
+   the review/contact forms often run taller than a phone viewport. */
+@media (min-width: 1101px) {
+  html { scroll-snap-type: y proximity; }
+  .hero, .section {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+  }
+}
+@media (min-width: 1101px) and (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; }
+}
+
 .eyebrow {
   display: block;
   font-size: 0.78rem;
@@ -1353,6 +1370,7 @@ main { overflow-wrap: anywhere; }
   }
   .site-header.is-scrolled .header-inner { height: 72px; }
   .hero, .section, .site-footer { scroll-margin-top: 88px; }
+  .hero, .section { min-height: calc(100vh - 88px); }
   .hero { padding-block: clamp(56px, 2.5vw, 96px); }
   .hero-inner { gap: 64px; }
   .hero-lead { max-width: 38rem; }
