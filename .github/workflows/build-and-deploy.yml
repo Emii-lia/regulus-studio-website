@@ -27,7 +27,7 @@ jobs:
       - name: Copy manifest.json, sitemap.xml and robots.txt to dist directory
         run: cp manifest.json sitemap.xml robots.txt -t dist/
       - name: Minify CSS
-        run: npx cleancss -o dist/css/style.css dist/css/style.css
+        run: npx lightningcss --minify --targets '>= 0.25%' dist/css/style.css -o dist/css/style.css
       - name: Minify JS
         run: npx terser dist/js/script.js -c -m -o dist/js/script.js
       - name: Minify HTML
