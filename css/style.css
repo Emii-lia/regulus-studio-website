@@ -133,18 +133,6 @@ main { overflow-wrap: anywhere; }
   box-shadow: 0 0 18px rgba(var(--button-glow), .3);
 }
 
-/* ===== Scroll progress bar ===== */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: linear-gradient(90deg, var(--primary), var(--accent-gold));
-  z-index: 210;
-  transition: width .1s linear;
-}
-
 /* ===== Header ===== */
 /* Transparent, floating over the hero video until the page scrolls —
    then it picks up the normal solid header look. */
@@ -317,7 +305,7 @@ main { overflow-wrap: anywhere; }
 .section-head { max-width: 720px; margin: 0 0 32px; }
 .section-head.centered { margin-left: auto; margin-right: auto; text-align: center; }
 .section-head h2, .review-text h2, .contact-text h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.65rem, 3.1vw, 2.35rem);
   letter-spacing: -0.025em;
   text-wrap: balance;
 }
@@ -386,12 +374,28 @@ main { overflow-wrap: anywhere; }
 }
 .hero-inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
 .hero h1 {
-  font-size: clamp(2rem, 4.4vw, 3.1rem);
+  font-size: clamp(1.85rem, 4vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.01em;
   color: #fff;
 }
-.hero h1 em { color: var(--hero-accent); font-style: italic; }
+.hero h1 em { color: #fff; font-style: italic; }
+@media (min-width: 1101px) {
+  .hero h1 em { font-size: .85em; }
+}
+.hero-phrases { display: inline-grid; max-width: 100%; vertical-align: baseline; text-align: left; color: var(--hero-accent); overflow: hidden; padding-inline: .08em; margin-inline: -.08em; }
+.hero-phrase {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: opacity .9s ease-in-out, transform .9s cubic-bezier(.22, 1, .36, 1), visibility .9s;
+}
+.hero-phrase.is-active { opacity: 1; visibility: visible; transform: translateY(0); }
+.hero-phrase.is-leaving { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-phrase, .hero-phrase.is-leaving { transition: none; transform: none; }
+}
 .hero-lead {
   max-width: 620px;
   margin: 0 auto 32px;
@@ -920,7 +924,7 @@ main { overflow-wrap: anywhere; }
   align-items: start;
 }
 .contact-text { padding-top: 24px; }
-.contact-text h2 { font-size: clamp(2.4rem, 5vw, 4rem); max-width: 9ch; }
+.contact-text h2 { max-width: 14ch; }
 .contact-grid > .project-form { justify-self: end; }
 .contact-text p { font-size: 1.02rem; }
 .contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
@@ -1335,6 +1339,17 @@ main { overflow-wrap: anywhere; }
   .contact-grid > .project-form { max-width: 620px; }
 }
 @media (max-width: 599px) {
+  .hero h1 { font-size: 1.65rem; }
+  .hero h1 em {
+    display: block;
+    margin-top: 12px;
+    font-size: clamp(.95rem, 4.4vw, 1.45rem);
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  .hero-lead { font-size: 1rem; }
+  .section-head h2, .review-text h2, .contact-text h2 { font-size: 1.5rem; }
+  .review-form-heading h3, .project-form-heading h3 { font-size: 1.25rem; }
   .grid-2, .grid-4 { grid-template-columns: minmax(0, 1fr); }
   .grid { gap: 16px; }
   .card { padding: 24px; }

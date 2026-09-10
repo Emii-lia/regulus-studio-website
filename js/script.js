@@ -3,6 +3,23 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Keep all phrases in the same grid cell to prevent layout shifts. */
+  var heroPhrases = document.querySelectorAll(".hero-phrase");
+  var heroPhraseIndex = 0;
+  if (heroPhrases.length > 1) {
+    window.setInterval(function () {
+      if (document.hidden || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var outgoingPhrase = heroPhrases[heroPhraseIndex];
+      outgoingPhrase.classList.add("is-leaving");
+      outgoingPhrase.classList.remove("is-active");
+      heroPhraseIndex = (heroPhraseIndex + 1) % heroPhrases.length;
+      heroPhrases[heroPhraseIndex].classList.add("is-active");
+      window.setTimeout(function () {
+        outgoingPhrase.classList.remove("is-leaving");
+      }, 1000);
+    }, 4600);
+  }
+
   /* Mobile nav toggle */
   var toggle = document.getElementById("nav-toggle");
   var nav = document.getElementById("main-nav");
@@ -48,9 +65,8 @@
     heroVideo.playbackRate = 16;
   }
 
-  /* Sticky header: shrink + shadow, and scroll progress bar */
+  /* Sticky header: shrink + shadow */
   var header = document.getElementById("site-header");
-  var progressBar = document.getElementById("scroll-progress");
   var ticking = false;
   var floatingActions = document.querySelector(".float-actions");
   var avisToastEl = document.getElementById("avis-toast");
@@ -61,12 +77,6 @@
 
     if (header) {
       header.classList.toggle("is-scrolled", scrollY > 12);
-    }
-
-    if (progressBar) {
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-      progressBar.style.width = pct + "%";
     }
 
     var floatWhatsapp = document.getElementById("float-whatsapp");
