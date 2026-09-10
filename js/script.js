@@ -53,6 +53,7 @@
   var progressBar = document.getElementById("scroll-progress");
   var ticking = false;
   var floatingActions = document.querySelector(".float-actions");
+  var avisToastEl = document.getElementById("avis-toast");
   var pageForms = document.querySelectorAll(".contact-form");
 
   function updateOnScroll() {
@@ -85,6 +86,19 @@
         });
       }
       floatingActions.classList.toggle("overlaps-form", overlapsForm);
+    }
+
+    // Same idea for the avis toast: don't let it sit on top of a form on compact screens.
+    if (avisToastEl) {
+      var toastOverlapsForm = false;
+      if (window.innerWidth <= 979) {
+        var toastRect = avisToastEl.getBoundingClientRect();
+        pageForms.forEach(function (form) {
+          var rect = form.getBoundingClientRect();
+          if (rect.top < toastRect.bottom && rect.bottom > toastRect.top) toastOverlapsForm = true;
+        });
+      }
+      avisToastEl.classList.toggle("overlaps-form", toastOverlapsForm);
     }
 
     ticking = false;
@@ -325,4 +339,62 @@
     "review-status",
     "Merci pour votre avis ! Il a bien été envoyé et sera lu avec attention."
   );
+
+  /* Avis toast: cycles through window.REGULUS_AVIS (js/avis-data.js) */
+  var avisList = window.REGULUS_AVIS || [];
+  var avisAlreadyClosed = false;
+  try { avisAlreadyClosed = sessionStorage.getItem("avisToastClosed") === "1"; } catch (e) {}
+
+  if (avisToastEl && avisList.length && !avisAlreadyClosed) {
+    var avisIndex = 0;
+    var avisStars = document.getElementById("avis-toast-stars");
+    var avisText = document.getElementById("avis-toast-text");
+    var avisAuthor = document.getElementById("avis-toast-author");
+    var avisCloseBtn = document.getElementById("avis-toast-close");
+    var avisTimer = null;
+    var avisPaused = false;
+
+    function renderAvis(index) {
+      var avis = avisList[index];
+      if (avisStars) avisStars.textContent = "★".repeat(avis.rating || 5);
+      if (avisText) avisText.textContent = "“" + avis.text + "”";
+      if (avisAuthor) avisAuthor.textContent = avis.company ? avis.name + " — " + avis.company : avis.name;
+    }
+
+    function showAvis(index) {
+      renderAvis(index);
+      avisToastEl.hidden = false;
+      window.requestAnimationFrame(function () {
+        avisToastEl.classList.add("is-visible");
+      });
+    }
+
+    function nextAvis() {
+      if (avisPaused) return;
+      avisToastEl.classList.remove("is-visible");
+      setTimeout(function () {
+        if (avisPaused) return;
+        avisIndex = (avisIndex + 1) % avisList.length;
+        showAvis(avisIndex);
+      }, 350);
+    }
+
+    function closeAvisToast() {
+      if (avisTimer) clearInterval(avisTimer);
+      avisToastEl.classList.remove("is-visible");
+      setTimeout(function () { avisToastEl.hidden = true; }, 350);
+      try { sessionStorage.setItem("avisToastClosed", "1"); } catch (e) {}
+    }
+
+    if (avisCloseBtn) avisCloseBtn.addEventListener("click", closeAvisToast);
+    avisToastEl.addEventListener("mouseenter", function () { avisPaused = true; });
+    avisToastEl.addEventListener("mouseleave", function () { avisPaused = false; });
+
+    setTimeout(function () {
+      showAvis(avisIndex);
+      if (avisList.length > 1) {
+        avisTimer = setInterval(nextAvis, 8000);
+      }
+    }, 4000);
+  }
 })();

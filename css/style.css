@@ -852,6 +852,45 @@ main { overflow-wrap: anywhere; }
 .float-top svg { width: 18px; height: 18px; }
 .float-top:hover { border-color: var(--primary); }
 
+/* ===== Avis toast (bulle d'avis client) ===== */
+.avis-toast {
+  position: fixed;
+  left: max(20px, env(safe-area-inset-left));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 140;
+  width: min(320px, calc(100vw - 40px));
+  background: var(--white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 18px 22px 18px 20px;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s ease, opacity .35s ease;
+}
+.avis-toast.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.avis-toast.overlaps-form { visibility: hidden; pointer-events: none; }
+.avis-toast-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+}
+.avis-toast-close:hover { color: var(--text-dark); }
+.avis-toast-stars { color: var(--rating-active); font-size: .9rem; letter-spacing: 2px; margin-bottom: 6px; }
+.avis-toast-text { margin: 0 0 8px; font-size: .9rem; color: var(--text-dark); }
+.avis-toast-author { margin: 0; font-size: .78rem; color: var(--text-muted); }
+@media (max-width: 600px) {
+  .avis-toast { left: 16px; right: 16px; width: auto; }
+}
+
 /* ===== Scroll reveal ===== */
 .reveal {
   opacity: 0;
