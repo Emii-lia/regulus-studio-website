@@ -1,72 +1,11 @@
 /* ===== Design tokens ===== */
 :root {
-  --bg-rgb: 255, 246, 248;
-  --bg: #fff6f8;
-  --bg-alt: #fdeef3;
-  --white: #ffffff;
-  --primary: #b1466f;
-  --on-primary: #ffffff;
-  --rating-active: #94651d;
-  --success: #2f7a4f;
-  --error: #b3261e;
-  --whatsapp-icon: #167342;
-  --primary-dark: #8f3559;
-  --primary-light: #e899b9;
-  --text-dark: #452a38;
-  --text-muted: #7a5d6c;
-  --border-soft: #f4d7e2;
-  --accent-gold: #d2a356;
-  --accent-lavender: #f1e8f6;
-  --shadow-soft: 0 20px 40px -20px rgba(69, 42, 56, 0.25);
-  --shadow-card: 0 10px 30px -18px rgba(69, 42, 56, 0.35);
-  /* The footer stays a fixed dark plum in both themes — a stable anchor at
-     the bottom of the page rather than something that flips with the toggle. */
-  --footer-bg: #34202c;
-  --footer-text: #f3e4ea;
-  --footer-text-strong: #ffffff;
-  --footer-muted: #c6a0b1;
-  --footer-border: rgba(255, 255, 255, 0.12);
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-pill: 999px;
-  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-sans: "Baloo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color-scheme: light;
-}
-
-/* ===== Dark theme =====
-   Explicit toggle wins via [data-theme]; otherwise we follow the OS preference. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg-rgb: 27, 17, 22;
-    --bg: #1b1116;
-    --bg-alt: #23151c;
-    --white: #2a1a23;
-    --primary: #e88bab;
-    --on-primary: #1b1116;
-    --rating-active: #e3bd80;
-    --success: #87d5a4;
-    --error: #ffaaa3;
-    --whatsapp-icon: #67df98;
-    --primary-dark: #f3a9c4;
-    --primary-light: #a8617f;
-    --text-dark: #f6e9ee;
-    --text-muted: #c7a3b3;
-    --border-soft: #3c2530;
-    --accent-gold: #e3bd80;
-    --accent-lavender: #362742;
-    --shadow-soft: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-    --shadow-card: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg-rgb: 27, 17, 22;
-  --bg: #1b1116;
-  --bg-alt: #23151c;
-  --white: #2a1a23;
+  --bg-rgb: 0, 0, 0;
+  --bg: #000000;
+  --bg-alt: #0b0b0d;
+  --white: #151417;
   --primary: #e88bab;
-  --on-primary: #1b1116;
+  --on-primary: #000000;
   --rating-active: #e3bd80;
   --success: #87d5a4;
   --error: #ffaaa3;
@@ -75,11 +14,25 @@
   --primary-light: #a8617f;
   --text-dark: #f6e9ee;
   --text-muted: #c7a3b3;
-  --border-soft: #3c2530;
+  --border-soft: #343036;
   --accent-gold: #e3bd80;
-  --accent-lavender: #362742;
+  --accent-lavender: #211a20;
   --shadow-soft: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
   --shadow-card: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
+  /* A black footer anchors the page. */
+  --footer-bg: #080809;
+  --footer-text: #f3e4ea;
+  --footer-text-strong: #ffffff;
+  --footer-muted: #c6a0b1;
+  --footer-border: rgba(255, 255, 255, 0.12);
+  --studio-glow: rgba(177, 70, 111, .09);
+  --hero-accent: #e899b9;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Baloo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --page-gutter: 24px;
   color-scheme: dark;
 }
 
@@ -117,7 +70,7 @@ button { font-family: inherit; }
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 max(var(--page-gutter), env(safe-area-inset-right)) 0 max(var(--page-gutter), env(safe-area-inset-left));
 }
 main { overflow-wrap: anywhere; }
 
@@ -177,15 +130,27 @@ main { overflow-wrap: anywhere; }
 }
 
 /* ===== Header ===== */
+/* Transparent, floating over the hero video until the page scrolls —
+   then it picks up the normal solid header look. */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: var(--bg);
-  border-bottom: 2px solid var(--border-soft);
+  background: transparent;
   transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-.site-header.is-scrolled { box-shadow: 0 6px 24px -18px rgba(69, 42, 56, 0.35); }
+.site-header.is-scrolled {
+  background: var(--bg);
+  box-shadow: 0 6px 24px -18px rgba(69, 42, 56, 0.35);
+}
+.site-header:not(.is-scrolled) .brand-wordmark { filter: brightness(0) invert(1); }
+.site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
+@media (min-width: 1101px) {
+  .site-header:not(.is-scrolled) .main-nav a:not(.btn) { color: #fff; opacity: .92; }
+  .site-header:not(.is-scrolled) .main-nav a:not(.btn)::after { background: #fff; }
+}
 .header-inner {
   display: flex;
   align-items: center;
@@ -205,10 +170,7 @@ main { overflow-wrap: anywhere; }
 .brand-wordmark { width: 105px; }
 .footer-wordmark { width: 104px; }
 .footer-wordmark { filter: brightness(0) invert(1); }
-:root[data-theme="dark"] .brand-wordmark { filter: brightness(0) invert(1); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .brand-wordmark { filter: brightness(0) invert(1); }
-}
+.brand-wordmark { filter: brightness(0) invert(1); }
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -267,30 +229,6 @@ main { overflow-wrap: anywhere; }
   gap: 10px;
 }
 
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-soft);
-  background: var(--white);
-  color: var(--primary);
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform .15s ease, border-color .15s ease, background .15s ease;
-}
-.theme-toggle:hover { transform: rotate(14deg); border-color: var(--primary); }
-.theme-toggle svg { width: 19px; height: 19px; }
-.theme-toggle .icon-moon { display: none; }
-:root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
-:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
-  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: block; }
-}
-
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -319,11 +257,20 @@ main { overflow-wrap: anywhere; }
 
 /* ===== Anchor spacing ===== */
 .hero, .section, .site-footer {
-  scroll-margin-top: 72px;
+  scroll-margin-top: 60px;
 }
 /* ===== Sections ===== */
-.section { padding: clamp(40px, 5vw, 72px) 0; }
-.section-alt { background: var(--bg-alt); }
+/* The hero's soft studio lighting carries through the page. Backgrounds
+   dominate, plum surfaces structure the content, rose highlights actions. */
+.section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(56px, 6vw, 88px) 0;
+  background: radial-gradient(ellipse at 85% 15%, var(--studio-glow), transparent 60%), var(--bg);
+}
+.section-alt {
+  background: radial-gradient(ellipse at 15% 80%, var(--studio-glow), transparent 65%), var(--bg-alt);
+}
 
 /* One section per screen on desktop: native scroll-snap, content centered
    vertically inside each min-height:100vh section. Left off on mobile since
@@ -331,7 +278,7 @@ main { overflow-wrap: anywhere; }
 @media (min-width: 1101px) {
   html { scroll-snap-type: y proximity; }
   .hero, .section {
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -353,7 +300,11 @@ main { overflow-wrap: anywhere; }
 }
 .section-head { max-width: 720px; margin: 0 0 32px; }
 .section-head.centered { margin-left: auto; margin-right: auto; text-align: center; }
-.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.section-head h2, .review-text h2, .contact-text h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
 .section-head::after,
 .hero-inner .eyebrow::after { content: ""; }
 .section-lead { max-width: 560px; }
@@ -367,81 +318,17 @@ main { overflow-wrap: anywhere; }
 .section-note a { color: var(--primary); font-weight: 700; }
 .section-note a:hover { text-decoration: underline; }
 
-/* small gold underline accent under headings inside section-head */
+/* A restrained rose light beneath each section heading. */
 .section-head h2::after {
   content: "";
   display: block;
   width: 42px;
   height: 3px;
-  background: var(--accent-gold);
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
   margin-top: 16px;
 }
 .section-head.centered h2::after { margin-left: auto; margin-right: auto; }
-
-/* ===== Decorative blobs ===== */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -140px;
-  right: -160px;
-  width: 460px;
-  height: 460px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  opacity: 0.4;
-  z-index: 0;
-  animation: float-blob 10s ease-in-out infinite;
-}
-@keyframes float-blob {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-16px, 22px) scale(1.05); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
-}
-#services { position: relative; overflow: hidden; }
-#services::before {
-  content: "";
-  position: absolute;
-  top: -120px;
-  right: -140px;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  background: var(--accent-lavender);
-  z-index: 0;
-}
-
-#besoins { position: relative; overflow: hidden; }
-#besoins::before {
-  content: "";
-  position: absolute;
-  bottom: -110px;
-  left: -130px;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: var(--accent-gold);
-  opacity: 0.16;
-  z-index: 0;
-}
-
-#a-propos { position: relative; overflow: hidden; }
-#a-propos::before {
-  content: "";
-  position: absolute;
-  top: -70px;
-  right: -150px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  opacity: 0.22;
-  z-index: 0;
-}
-
-#services .container, #besoins .container, #a-propos .container { position: relative; z-index: 1; }
 
 /* À propos: left-aligned intro breaks the centered-heading rhythm of the two grid sections above it */
 #a-propos .section-head.centered {
@@ -452,29 +339,58 @@ main { overflow-wrap: anywhere; }
 #a-propos .section-head.centered h2::after { margin-left: 0; margin-right: 0; }
 
 /* Avis: soft vertical wash instead of a flat fill, so it doesn't read as a repeat of À propos right above it */
-.review-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%); }
+.review-section { background: radial-gradient(ellipse at 20% 35%, var(--studio-glow), transparent 60%), var(--bg); }
 
-/* ===== Hero ===== */
-.hero { padding: clamp(24px, 4vw, 56px) 0; overflow: hidden; position: relative; }
-.hero-inner { max-width: 1180px; margin: 0 auto; text-align: left; position: relative; z-index: 1; }
+/* ===== Hero =====
+   Full-bleed video background (studio lights turning on) with the header
+   floating transparently on top until the page scrolls. */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(96px, 16vh, 160px) 0 clamp(48px, 8vh, 96px);
+  overflow: hidden;
+}
+.hero::before { display: none; }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 6, 8, .6) 0%, rgba(10, 6, 8, .32) 45%, rgba(10, 6, 8, .7) 100%);
+  z-index: 1;
+}
+.hero-inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
 .hero h1 {
   font-size: clamp(2rem, 4.4vw, 3.1rem);
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: #fff;
 }
-.hero h1 em { color: var(--primary); font-style: italic; }
+.hero h1 em { color: var(--hero-accent); font-style: italic; }
 .hero-lead {
   max-width: 620px;
-  margin: 0 0 32px;
+  margin: 0 auto 32px;
   font-size: 1.08rem;
+  color: rgba(255, 255, 255, .82);
 }
 .hero-ctas {
   display: flex;
   gap: 16px;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
+.hero-ctas .btn-outline { color: #fff; border-color: rgba(255, 255, 255, .5); }
+.hero-ctas .btn-outline:hover { border-color: #fff; background: rgba(255, 255, 255, .12); }
 
 .trust-badges {
   display: flex;
@@ -496,27 +412,9 @@ main { overflow-wrap: anywhere; }
 }
 .trust-badges .icon { color: var(--primary); }
 
-.hero-text { max-width: 620px; margin: 0; }
-.hero-signature { margin-bottom: 0; }
-
-/* The illustration participates in layout, so it cannot overlap the copy. */
-.hero::before { display: none; }
-.hero-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 3vw, 48px);
-}
-.hero-text { max-width: none; min-width: 0; }
-.hero-artwork { width: 100%; height: auto; min-width: 0; }
-.hero h1 { font-size: clamp(1.9rem, 3.2vw, 3.1rem); }
-@media (max-width: 979px) {
-  .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 12px; text-align: center; }
-  .hero-artwork { grid-row: 1; max-width: 440px; justify-self: center; }
-  .hero-text { width: 100%; max-width: 680px; justify-self: center; }
-  .hero-lead { margin-left: auto; margin-right: auto; }
-  .hero-ctas { justify-content: center; }
-}
+.hero-text { max-width: none; margin: 0; }
+.hero-signature { margin-bottom: 0; color: rgba(255, 255, 255, .7); }
+.hero-video { display: block; }
 
 .icon { width: 18px; height: 18px; flex-shrink: 0; }
 
@@ -529,7 +427,8 @@ main { overflow-wrap: anywhere; }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
 .card {
-  background: var(--white);
+  background: linear-gradient(145deg, var(--white), var(--bg));
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-lg);
   padding: 32px;
   border: 1px solid var(--border-soft);
@@ -542,10 +441,10 @@ main { overflow-wrap: anywhere; }
 }
 .pain-card:hover { background: var(--white); }
 
-/* pain-points cards: tinted bg, icon sits in a white badge */
+/* Shared rose icon treatment across the service and needs cards. */
 .pain-card {
   background: var(--bg-alt);
-  border: none;
+  border: 1px solid var(--border-soft);
 }
 .card-icon {
   display: inline-flex;
@@ -560,7 +459,7 @@ main { overflow-wrap: anywhere; }
 }
 .card-icon svg { width: 22px; height: 22px; }
 
-/* services cards: colored badge behind the icon, a different tint per card */
+/* Services use the same palette as the hero call to action. */
 .service-icon {
   display: inline-flex;
   align-items: center;
@@ -573,16 +472,15 @@ main { overflow-wrap: anywhere; }
   margin-bottom: 16px;
 }
 .service-icon svg { width: 26px; height: 26px; }
-.service-card:nth-child(2) .service-icon { background: var(--accent-lavender); color: var(--primary-dark); }
+
 .service-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
 .service-card { display: flex; flex-direction: column; align-items: flex-start; }
-.service-link { margin-top: 22px; }
+.service-link { margin-top: auto; }
 
-/* need-cards: each path to a project gets its own color tag on top */
-.need-card { display: flex; flex-direction: column; border-top: 4px solid var(--primary); }
-.need-card:nth-child(2) { border-top-color: var(--accent-gold); }
-.need-card:nth-child(3) { border-top-color: var(--primary-light); }
-.need-card:nth-child(4) { border-top-color: var(--text-muted); }
+/* Project choices share one accent instead of competing colour tags. */
+.need-card { display: flex; flex-direction: column; border-top: 2px solid var(--primary-light); }
+.need-card:hover { border-color: var(--primary); box-shadow: var(--shadow-soft); }
+.service-card p { margin-bottom: 24px; }
 .need-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
 .need-card p { flex: 1; }
 .need-link {
@@ -783,15 +681,24 @@ main { overflow-wrap: anywhere; }
 /* ===== Avis client ===== */
 .review-grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 32px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  grid-template-areas: "notebook introduction";
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
 }
-.review-text { max-width: 460px; position: relative; }
+.review-grid > .review-form { grid-area: notebook; justify-self: start; }
+.review-text {
+  grid-area: introduction;
+  max-width: 460px;
+  position: relative;
+  padding-block: 32px;
+}
+.review-text h2 { font-style: italic; }
+.review-text > .eyebrow { margin-bottom: 24px; }
 .review-text::before {
   content: "\201C";
   position: absolute;
-  top: -54px;
+  top: -42px;
   left: -8px;
   font-family: var(--font-serif);
   font-size: 8rem;
@@ -800,16 +707,14 @@ main { overflow-wrap: anywhere; }
   opacity: 0.4;
   z-index: -1;
 }
-.review-text h2 { font-size: clamp(1.8rem, 3vw, 2.35rem); }
+
 .review-note {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   margin-top: 28px;
-  padding: 18px 20px;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-md);
-  background: var(--bg-alt);
+  padding: 8px 0 8px 20px;
+  border-left: 2px solid var(--primary-light);
 }
 .review-note .icon { color: var(--primary); margin-top: 3px; }
 .review-note p { margin: 0; font-size: 0.92rem; }
@@ -938,24 +843,26 @@ main { overflow-wrap: anywhere; }
 /* ===== Contact ===== */
 .contact-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 32px;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: clamp(40px, 6vw, 88px);
   align-items: start;
 }
+.contact-text { padding-top: 24px; }
+.contact-text h2 { font-size: clamp(2.4rem, 5vw, 4rem); max-width: 9ch; }
+.contact-grid > .project-form { justify-self: end; }
 .contact-text p { font-size: 1.02rem; }
-.contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
 .contact-links a {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: var(--white);
-  border: 1px solid var(--border-soft);
-  padding: 16px 20px;
-  border-radius: var(--radius-md);
+  background: transparent;
+  border-bottom: 1px solid var(--border-soft);
+  padding: 18px 0;
   font-weight: 600;
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.contact-links a:hover { transform: translateY(-1px); box-shadow: var(--shadow-card); }
+.contact-links a:hover { color: var(--primary); transform: translateX(3px); }
 .contact-links .icon {
   width: 18px;
   height: 18px;
@@ -965,8 +872,7 @@ main { overflow-wrap: anywhere; }
   background: var(--bg-alt);
   color: var(--primary);
 }
-.contact-links li:nth-child(2) .icon { background: rgba(37, 211, 102, 0.16); color: var(--whatsapp-icon); }
-.contact-links li:nth-child(3) .icon { background: rgba(24, 119, 242, 0.14); color: #1877f2; }
+
 
 .contact-form {
   --form-padding: 28px;
@@ -1012,11 +918,11 @@ main { overflow-wrap: anywhere; }
 .field textarea:invalid:not(:placeholder-shown) { border-color: var(--error); }
 .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); opacity: 1; }
 
-/* Client reviews: a personal notebook with a gold ribbon and writing lines. */
+/* Client reviews retain the notebook composition within the rose palette. */
 .review-form {
   position: relative;
   border-radius: 4px 32px 32px 4px;
-  border-top: 4px solid var(--accent-gold);
+  border-top: 2px solid var(--primary-light);
   background: linear-gradient(90deg, var(--bg-alt) 0 12px, var(--white) 12px);
   box-shadow: 8px 8px 0 var(--bg-alt), 9px 9px 0 var(--border-soft);
 }
@@ -1028,7 +934,7 @@ main { overflow-wrap: anywhere; }
   position: absolute;
   right: 0;
   top: -8px;
-  color: var(--accent-gold);
+  color: var(--primary-light);
   font: 5rem/1 var(--font-serif);
 }
 .review-form .rating-field {
@@ -1036,13 +942,13 @@ main { overflow-wrap: anywhere; }
   text-align: center;
   padding: 8px 12px;
   margin-bottom: 16px;
-  border: 1px dashed var(--accent-gold);
+  border: 1px solid var(--border-soft);
   border-radius: 16px;
   background: var(--bg);
 }
 .review-form .rating-field legend { padding: 0 10px; margin: 0 auto; }
-.review-form .star-rating { gap: 4px; }
-.review-form .star-rating label { display: grid; place-items: center; width: 44px; height: 44px; color: var(--text-muted); }
+.review-form .star-rating { display: flex; width: 100%; max-width: 240px; margin-inline: auto; gap: 4px; }
+.review-form .star-rating label { display: grid; place-items: center; flex: 1; min-width: 0; height: 44px; color: var(--text-muted); }
 @media (max-width: 319px) {
   .review-form .rating-field { padding-inline: 0; }
   .review-form .star-rating { display: flex; width: 100%; gap: 0; }
@@ -1069,8 +975,7 @@ main { overflow-wrap: anywhere; }
 .review-form .field textarea:focus { outline: 2px solid var(--primary); outline-offset: 4px; }
 .review-form .field input:invalid:not(:placeholder-shown),
 .review-form .field textarea:invalid:not(:placeholder-shown) { border-color: var(--error); }
-.review-form .btn-primary { background: var(--text-dark); color: var(--white); border-color: var(--text-dark); box-shadow: none; }
-.review-form .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+
 
 /* Contact: a project brief with a coloured header and numbered groups. */
 .project-form { border-radius: 24px; border: 1px solid var(--primary-light); }
@@ -1100,7 +1005,7 @@ main { overflow-wrap: anywhere; }
 .project-group .field:last-child { margin-bottom: 0; }
 .project-form .field input, .project-form .field textarea { border-radius: 12px; }
 .project-form .field input:focus, .project-form .field textarea:focus { box-shadow: 0 0 0 3px var(--border-soft); }
-.project-form .btn { border-radius: 12px; }
+.project-form .btn { border-radius: var(--radius-pill); }
 
 @media (max-width: 380px) {
   .review-form-heading { padding-right: 28px; }
@@ -1234,9 +1139,7 @@ main { overflow-wrap: anywhere; }
   .timeline { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
   .timeline::before { display: none; }
 
-  /* Header switches to the hamburger nav here rather than at 768px: with 6 links,
-     a CTA pill and the theme toggle, the inline nav has no room left below ~1100px
-     and the brand block gets squeezed until "Regulus" collides with "Approche". */
+  /* Collapse navigation before its links and call to action crowd the logo. */
   .main-nav {
     position: fixed;
     top: 72px;
@@ -1254,7 +1157,10 @@ main { overflow-wrap: anywhere; }
     visibility: hidden;
     pointer-events: none;
     transition: transform .2s ease, opacity .2s ease;
+    max-height: calc(100vh - 72px);
     max-height: calc(100dvh - 72px);
+    overscroll-behavior: contain;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
     overflow-y: auto;
   }
   .site-header.is-scrolled .main-nav { top: 60px; max-height: calc(100dvh - 60px); }
@@ -1269,7 +1175,7 @@ main { overflow-wrap: anywhere; }
 }
 
 @media (max-width: 768px) {
-  .section { padding: 40px 0; }
+  .section { padding: 56px 0; }
   .float-actions { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); }
   .float-btn { width: 48px; height: 48px; }
   .float-top { width: 40px; height: 40px; }
@@ -1302,7 +1208,7 @@ main { overflow-wrap: anywhere; }
 }
 
 @media (pointer: coarse) {
-  .theme-toggle, .nav-toggle, .float-top { width: 44px; height: 44px; }
+  .nav-toggle, .float-top { width: 44px; height: 44px; }
   .footer-socials a { width: 44px; height: 44px; }
 }
 
@@ -1317,7 +1223,7 @@ main { overflow-wrap: anywhere; }
 }
 
 @media (max-width: 380px) {
-  .container { padding: 0 16px; }
+  :root { --page-gutter: 16px; }
   .hero-ctas .btn, .btn-full { padding: 13px 20px; }
   .card { padding: 24px 18px; }
   .contact-form { --form-padding: 18px; }
@@ -1345,9 +1251,16 @@ main { overflow-wrap: anywhere; }
   .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 979px) {
-  .contact-grid, .review-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .contact-text, .review-text { width: 100%; max-width: 620px; justify-self: center; }
-  .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .contact-grid, .review-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .review-grid { grid-template-areas: "introduction" "notebook"; }
+  .contact-text, .review-text { width: 100%; max-width: 620px; justify-self: center; padding-block: 0; }
+  .review-text { text-align: center; }
+  .review-note { max-width: 420px; margin-inline: auto; text-align: left; }
+  .review-text::before { top: -24px; left: 0; }
+  .review-grid > .review-form, .contact-grid > .project-form { justify-self: center; }
+  .contact-text h2 { max-width: none; }
+  .contact-links { margin-top: 24px; }
+  .contact-grid > .project-form { max-width: 620px; }
 }
 @media (max-width: 599px) {
   .grid-2, .grid-4 { grid-template-columns: minmax(0, 1fr); }
@@ -1370,10 +1283,8 @@ main { overflow-wrap: anywhere; }
     height: 88px;
   }
   .site-header.is-scrolled .header-inner { height: 72px; }
-  .hero, .section, .site-footer { scroll-margin-top: 88px; }
-  .hero, .section { min-height: calc(100vh - 88px); }
-  .hero { padding-block: clamp(56px, 2.5vw, 96px); }
-  .hero-inner { gap: 64px; }
+  .hero, .section, .site-footer { scroll-margin-top: 72px; }
+  .section { min-height: calc(100vh - 72px); }
   .hero-lead { max-width: 38rem; }
   .section { padding-block: clamp(72px, 2.7vw, 104px); }
   .section-head { max-width: 44rem; }
@@ -1386,4 +1297,28 @@ main { overflow-wrap: anywhere; }
   .review-text, .contact-text { max-width: 32rem; }
   .contact-form { max-width: clamp(500px, calc(360px + 7.291667vw), 640px); --form-padding: 1.6rem; }
   .footer-tagline { max-width: 24rem; }
+}
+
+/* The mobile menu is the only remaining header action. */
+@media (min-width: 1101px) {
+  .header-actions { display: none; }
+}
+
+/* Keep controls usable with touch, a software keyboard, and short viewports. */
+.field input, .field textarea { scroll-margin-block: 90px 32px; }
+.nav-open .float-actions { display: none; }
+@media (max-width: 979px) {
+  .float-actions.overlaps-form { visibility: hidden; pointer-events: none; }
+}
+@media (max-height: 600px) {
+  html { scroll-snap-type: none; }
+  .hero { padding-block: 96px 40px; }
+  .section { min-height: auto; }
+}
+@media (pointer: coarse) {
+  .need-link, .footer-nav a, .footer-contact a { min-height: 44px; display: inline-flex; align-items: center; }
+}
+@media (max-width: 380px) {
+  .review-form .rating-field { padding-inline: 0; }
+  .card { padding: 24px 18px; }
 }

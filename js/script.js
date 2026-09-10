@@ -37,39 +37,23 @@
     }, { passive: true });
   }
 
-  /* Theme toggle (light/dark), persisted in localStorage */
-  var themeToggle = document.getElementById("theme-toggle");
-  if (themeToggle) {
-    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-    function currentTheme() {
-      var explicit = document.documentElement.getAttribute("data-theme");
-      if (explicit === "light" || explicit === "dark") return explicit;
-      return prefersDark.matches ? "dark" : "light";
-    }
-
-    function applyThemeLabel() {
-      var isDark = currentTheme() === "dark";
-      themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
-      themeToggle.setAttribute("aria-label", isDark ? "Activer le thème clair" : "Activer le thème sombre");
-    }
-    applyThemeLabel();
-    if (typeof prefersDark.addEventListener === "function") {
-      prefersDark.addEventListener("change", applyThemeLabel);
-    }
-
-    themeToggle.addEventListener("click", function () {
-      var next = currentTheme() === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      try { localStorage.setItem("rs-theme", next); } catch (e) {}
-      applyThemeLabel();
-    });
+  /* Hero video: plays once (studio lights turning on) and holds on the last, lit frame
+     — it has no "loop" attribute, so the browser stops there on its own.
+     Users with reduced-motion get the same clip fast-forwarded, reaching the lit frame in a fraction of a second. */
+  var heroVideo = document.querySelector(".hero-video");
+  if (heroVideo && reduceMotion) {
+    // These files carry no seek index (seekable range is just [0,0]), so jumping
+    // straight to the last frame isn't possible — only sequential playback is.
+    // Fast-forward through the transition instead of skipping it outright.
+    heroVideo.playbackRate = 16;
   }
 
   /* Sticky header: shrink + shadow, and scroll progress bar */
   var header = document.getElementById("site-header");
   var progressBar = document.getElementById("scroll-progress");
   var ticking = false;
+  var floatingActions = document.querySelector(".float-actions");
+  var pageForms = document.querySelectorAll(".contact-form");
 
   function updateOnScroll() {
     var scrollY = window.scrollY || window.pageYOffset;
@@ -90,6 +74,19 @@
     if (floatWhatsapp) floatWhatsapp.classList.toggle("is-visible", showFloats);
     if (floatTop) floatTop.classList.toggle("is-visible", showFloats);
 
+    // On compact screens, keep floating shortcuts off the form being read or filled.
+    if (floatingActions) {
+      var overlapsForm = false;
+      if (window.innerWidth <= 979) {
+        var actionsRect = floatingActions.getBoundingClientRect();
+        pageForms.forEach(function (form) {
+          var rect = form.getBoundingClientRect();
+          if (rect.top < actionsRect.bottom && rect.bottom > actionsRect.top) overlapsForm = true;
+        });
+      }
+      floatingActions.classList.toggle("overlaps-form", overlapsForm);
+    }
+
     ticking = false;
   }
 
@@ -99,6 +96,7 @@
       ticking = true;
     }
   }, { passive: true });
+  window.addEventListener("resize", updateOnScroll, { passive: true });
   updateOnScroll();
 
   var floatTopBtn = document.getElementById("float-top");

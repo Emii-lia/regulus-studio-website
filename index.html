@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="google-site-verification" content="your-google-site-verification-code">
   <title>Regulus Studio — Outils numériques sur mesure pour petites entreprises</title>
   <meta name="description" content="Regulus Studio conçoit des applications de gestion et des sites web sur mesure pour les petites et moyennes entreprises : caisse, stock, personnel, réservations, sites vitrines et portfolios.">
@@ -23,25 +23,15 @@
   <meta name="twitter:title" content="Regulus Studio — Outils numériques sur mesure">
   <meta name="twitter:description" content="Des applications de gestion et des sites web simples, fiables et pensés pour vous correspondre.">
   <meta name="twitter:image" content="https://regulus-studio.tech/assets/og-image.png">
-  <meta name="theme-color" content="#fff6f8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1b1116" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://regulus-studio.tech"/>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="assets/Icône%20seule.svg">
-  <link rel="preload" as="image" href="assets/illustration-dashboard-anime.svg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Baloo+2:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <noscript><style>.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}</style></noscript>
-  <script>
-    try {
-      var savedTheme = localStorage.getItem("rs-theme");
-      if (savedTheme === "light" || savedTheme === "dark") {
-        document.documentElement.setAttribute("data-theme", savedTheme);
-      }
-    } catch (e) {}
-  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -81,10 +71,6 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Activer le thème sombre" aria-pressed="false">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-        </button>
         <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
           <span></span><span></span><span></span>
         </button>
@@ -97,9 +83,14 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
+    <video class="hero-video" autoplay muted playsinline preload="auto" aria-hidden="true">
+      <source src="assets/regulus-hero-mobile-light-on.webm" type="video/webm" media="(max-width: 768px)">
+      <source src="assets/regulus-hero-light-on.webm" type="video/webm">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-text">
-        <h1>Des solutions numériques <em>pensées pour votre entreprise.</em></h1>
+        <h1>Bienvenue chez Regulus Studio.<br><em>Là où vos idées prennent forme.</em></h1>
         <p class="hero-lead">Regulus Studio accompagne les PME dans leur transformation numérique avec des <strong>sites web professionnels</strong> et des <strong>applications de gestion sur mesure</strong>, adaptés à leurs besoins.</p>
 
         <div class="hero-ctas">
@@ -109,7 +100,6 @@
 
         <p class="hero-signature"><em>Regulus Studio — Beyond what’s possible.</em></p>
       </div>
-      <img class="hero-artwork" src="assets/illustration-dashboard-anime.svg" alt="" width="960" height="780" fetchpriority="high">
     </div>
   </section>
 
