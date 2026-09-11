@@ -438,6 +438,229 @@ main { overflow-wrap: anywhere; }
 
 .icon { width: 18px; height: 18px; flex-shrink: 0; }
 
+/* ==========================================================================
+   Section WaaS — Composition Éditoriale 2 colonnes
+   ========================================================================== */
+
+.waas-section {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Grille principale desktop */
+.waas-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(40px, 6vw, 84px);
+  align-items: center;
+}
+
+/* --- Colonne Gauche : Proposition éditoriale --- */
+.waas-col-editorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(24px, 4vh, 48px);
+}
+
+.waas-editorial-header .eyebrow {
+  margin-bottom: 14px;
+}
+
+.waas-editorial-header h2 {
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+  margin-bottom: 20px;
+}
+
+.waas-editorial-header .section-lead {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* Conclusion intégrée dans la colonne gauche */
+.waas-statement {
+  font-family: var(--font-serif);
+  font-size: max(1.18rem, min(1.8vw, 1.45rem));
+  color: var(--text-dark);
+  letter-spacing: -0.015em;
+  margin: 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--primary);
+  line-height: 1.35;
+}
+
+.waas-statement em {
+  font-style: italic;
+  color: var(--primary);
+  display: block;
+  margin-top: 2px;
+}
+
+/* --- Colonne Droite : Preuve du modèle & Bénéfices --- */
+.waas-col-proof {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Rangées de comparaison compactes */
+.waas-compare-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compare-row {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.compare-row.is-waas {
+  background: linear-gradient(90deg, rgba(232, 139, 171, 0.08) 0%, var(--bg-alt) 100%);
+  border-color: var(--primary-light);
+}
+
+.compare-row-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.is-waas .compare-row-label {
+  color: var(--primary);
+}
+
+.compare-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.compare-steps .step {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.compare-steps .sep {
+  color: var(--border-soft);
+  user-select: none;
+  font-size: 0.85em;
+}
+
+.is-waas .compare-steps .step {
+  color: var(--text-dark);
+}
+
+.is-waas .compare-steps .sep {
+  color: var(--primary-light);
+}
+
+.compare-steps .step.is-fin {
+  opacity: 0.65;
+}
+
+.compare-steps .step.is-fin small {
+  font-size: 0.78em;
+  text-transform: uppercase;
+}
+
+.compare-steps .step.is-evolution {
+  color: var(--primary);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Grille 2×2 des panneaux bénéfices */
+.waas-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.waas-panel {
+  background: var(--white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.waas-panel:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.waas-panel h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.waas-panel p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Adaptations Tablette et Mobile --- */
+@media (max-width: 960px) {
+  .waas-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .waas-col-editorial {
+    gap: 24px;
+  }
+
+  .compare-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .compare-steps {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .waas-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .waas-panel {
+    padding: 18px 20px;
+  }
+
+  .waas-editorial-header h2 {
+    font-size: 1.6rem;
+  }
+}
+
+
 /* ===== Grids & cards ===== */
 .grid { display: grid; gap: 24px; }
 .grid > *, .contact-grid > *, .review-grid > *, .footer-top > * { min-width: 0; }
