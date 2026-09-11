@@ -445,6 +445,7 @@ main { overflow-wrap: anywhere; }
   gap: clamp(40px, 6vw, 84px);
   align-items: center;
 }
+.waas-layout > *, .waas-col-proof > *, .compare-row > * { min-width: 0; }
 
 /* --- Colonne Gauche : Proposition éditoriale --- */
 .waas-col-editorial {

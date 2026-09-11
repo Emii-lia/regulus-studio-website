@@ -123,6 +123,16 @@
       }
     }, { passive: true });
     benefits.addEventListener("wheel", stopBenefitAnimation, { passive: true });
+    if ("ResizeObserver" in window) {
+      var benefitWidth = benefits.clientWidth;
+      new ResizeObserver(function () {
+        if (benefits.clientWidth === benefitWidth) return;
+        benefitWidth = benefits.clientWidth;
+        stopBenefitAnimation();
+        benefits.scrollTo({ left: (benefitIndex + 1) * benefitStride(), behavior: "instant" });
+        scheduleBenefit();
+      }).observe(benefits);
+    }
   }
 
   /* Keep all phrases in the same grid cell to prevent layout shifts. */
