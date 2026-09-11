@@ -3,6 +3,128 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var benefits = document.getElementById("waas-benefits");
+  var benefitControls = document.querySelector(".waas-benefits-controls");
+  if (benefits && benefitControls) {
+    var benefitCards = benefits.querySelectorAll(".waas-panel");
+    var firstBenefitCopy = benefitCards[0].cloneNode(true);
+    var lastBenefitCopy = benefitCards[benefitCards.length - 1].cloneNode(true);
+    [firstBenefitCopy, lastBenefitCopy].forEach(function (copy) {
+      copy.setAttribute("aria-hidden", "true");
+      copy.setAttribute("inert", "");
+    });
+    benefits.prepend(lastBenefitCopy);
+    benefits.append(firstBenefitCopy);
+    function benefitStride() {
+      return benefits.clientWidth + (parseFloat(getComputedStyle(benefits).columnGap) || 0);
+    }
+    function normalizeBenefit() {
+      var stride = benefitStride();
+      var position = Math.round(benefits.scrollLeft / stride);
+      if (position === 0 || position === benefitCards.length + 1) {
+        benefits.scrollTo({ left: (position === 0 ? benefitCards.length : 1) * stride, behavior: "instant" });
+      }
+    }
+    benefits.scrollTo({ left: benefitStride(), behavior: "instant" });
+    var benefitIndex = 0;
+    var benefitTimer;
+    var benefitFrame;
+    var benefitAnimatingUntil = 0;
+    function stopBenefitAnimation() {
+      window.cancelAnimationFrame(benefitFrame);
+      benefitAnimatingUntil = 0;
+      benefits.style.scrollSnapType = "";
+    }
+    var benefitHovered = false;
+    var benefitTouched = false;
+    function scheduleBenefit() {
+      window.clearTimeout(benefitTimer);
+      benefitTimer = window.setTimeout(function () {
+        var bounds = benefits.getBoundingClientRect();
+        var focused = benefits.contains(document.activeElement) || benefitControls.contains(document.activeElement);
+        if (!document.hidden && !benefitHovered && !benefitTouched && !focused &&
+            bounds.top < window.innerHeight && bounds.bottom > 0 &&
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          showBenefit(1);
+        }
+        scheduleBenefit();
+      }, 3000);
+    }
+    [benefits, benefitControls].forEach(function (element) {
+      element.addEventListener("pointerenter", function (event) {
+        if (event.pointerType === "mouse") benefitHovered = true;
+      });
+      element.addEventListener("pointerleave", function () {
+        benefitHovered = false;
+        scheduleBenefit();
+      });
+      element.addEventListener("pointerdown", function () {
+        benefitTouched = true;
+        stopBenefitAnimation();
+      });
+      element.addEventListener("focusout", scheduleBenefit);
+    });
+    function releaseBenefit() {
+      if (!benefitTouched) return;
+      benefitTouched = false;
+      scheduleBenefit();
+    }
+    window.addEventListener("pointerup", releaseBenefit);
+    window.addEventListener("pointercancel", releaseBenefit);
+    scheduleBenefit();
+    benefitControls.hidden = false;
+    function showBenefit(direction) {
+      stopBenefitAnimation();
+      normalizeBenefit();
+      benefitIndex = (benefitIndex + direction + benefitCards.length) % benefitCards.length;
+      var stride = benefitStride();
+      var position = Math.round(benefits.scrollLeft / stride);
+      var target = (position + direction) * stride;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        benefits.scrollTo({ left: target, behavior: "instant" });
+        normalizeBenefit();
+        return;
+      }
+      var from = benefits.scrollLeft;
+      var started = performance.now();
+      benefitAnimatingUntil = started + 900;
+      benefits.style.scrollSnapType = "none";
+      function animateBenefit(now) {
+        var progress = Math.min((now - started) / 800, 1);
+        var eased = (1 - Math.cos(Math.PI * progress)) / 2;
+        benefits.scrollTo({ left: from + (target - from) * eased, behavior: "instant" });
+        if (progress < 1) benefitFrame = window.requestAnimationFrame(animateBenefit);
+        else {
+          normalizeBenefit();
+          benefits.style.scrollSnapType = "";
+        }
+      }
+      benefitFrame = window.requestAnimationFrame(animateBenefit);
+    }
+    benefitControls.querySelector(".waas-benefits-prev").addEventListener("click", function () { showBenefit(-1); });
+    benefitControls.querySelector(".waas-benefits-next").addEventListener("click", function () { showBenefit(1); });
+    benefits.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        showBenefit(event.key === "ArrowLeft" ? -1 : 1);
+      }
+    });
+    var benefitSettleTimer;
+    benefits.addEventListener("scroll", function () {
+      var position = Math.round(benefits.scrollLeft / benefitStride());
+      benefitIndex = (position - 1 + benefitCards.length) % benefitCards.length;
+      benefitControls.querySelector(".waas-benefits-count").textContent = (benefitIndex + 1) + " / " + benefitCards.length;
+      if (performance.now() > benefitAnimatingUntil) {
+        scheduleBenefit();
+        window.clearTimeout(benefitSettleTimer);
+        benefitSettleTimer = window.setTimeout(function () {
+          if (!benefitTouched) normalizeBenefit();
+        }, 150);
+      }
+    }, { passive: true });
+    benefits.addEventListener("wheel", stopBenefitAnimation, { passive: true });
+  }
+
   /* Keep all phrases in the same grid cell to prevent layout shifts. */
   var heroPhrases = document.querySelectorAll(".hero-phrase");
   var heroPhraseIndex = 0;

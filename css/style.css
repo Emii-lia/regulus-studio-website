@@ -334,14 +334,6 @@ main { overflow-wrap: anywhere; }
 }
 .section-head.centered h2::after { margin-left: auto; margin-right: auto; }
 
-/* À propos: left-aligned intro breaks the centered-heading rhythm of the two grid sections above it */
-#a-propos .section-head.centered {
-  text-align: left;
-  margin-left: 0;
-  margin-right: 0;
-}
-#a-propos .section-head.centered h2::after { margin-left: 0; margin-right: 0; }
-
 /* Avis: soft vertical wash instead of a flat fill, so it doesn't read as a repeat of À propos right above it */
 .review-section { background: radial-gradient(ellipse at 20% 35%, var(--studio-glow), transparent 60%), var(--bg); }
 
@@ -463,6 +455,7 @@ main { overflow-wrap: anywhere; }
 }
 
 .waas-editorial-header .eyebrow {
+  font-size: 0.88rem;
   margin-bottom: 14px;
 }
 
@@ -505,6 +498,8 @@ main { overflow-wrap: anywhere; }
   flex-direction: column;
   gap: 20px;
 }
+.waas-cta { align-self: center; }
+#contact-form { scroll-margin-top: 100px; }
 
 /* Rangées de comparaison compactes */
 .waas-compare-rows {
@@ -587,7 +582,98 @@ main { overflow-wrap: anywhere; }
   gap: 4px;
 }
 
-/* Grille 2×2 des panneaux bénéfices */
+/* Repeat equal-width groups for a seamless leftward loop. */
+.waas-carousel { min-width: 0; width: 100%; }
+.waas-cycle-copy { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .waas-track .step.is-evolution {
+    animation: waas-evolution-glow 20s ease-in-out infinite;
+  }
+  .waas-carousel {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  }
+  .waas-track {
+    display: flex;
+    width: max-content;
+    animation: waas-scroll 20s linear infinite;
+  }
+  .waas-track .waas-cycle {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    gap: 16px;
+    padding-right: 16px;
+    white-space: nowrap;
+  }
+  .waas-cycle::after {
+    content: "→";
+    color: var(--primary-light);
+  }
+  .waas-carousel:hover .waas-track { animation-play-state: paused; }
+}
+@keyframes waas-scroll {
+  to { transform: translateX(-50%); }
+}
+@keyframes waas-evolution-glow {
+  0%, 12%, 29%, 47%, 72%, 100% { text-shadow: none; }
+  7%, 23%, 64% {
+    text-shadow: 0 0 4px var(--primary-light), 0 0 10px rgba(232, 139, 171, .75), 0 0 18px rgba(232, 139, 171, .5);
+  }
+  39%, 87% {
+    text-shadow: 0 0 4px var(--primary-light), 0 0 10px rgba(232, 139, 171, .45);
+  }
+}
+
+/* One benefit per slide, with touch scrolling and arrow controls. */
+.waas-benefits-controls:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: -8px;
+}
+.waas-benefits-count { margin-right: auto; color: var(--text-muted); font-size: .85rem; }
+.waas-benefits-controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-soft);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.waas-benefits-controls button:hover { border-color: var(--primary); }
+.waas-benefits-grid#waas-benefits {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.waas-benefits-grid#waas-benefits::-webkit-scrollbar { display: none; }
+#waas-benefits .waas-panel {
+  min-height: clamp(240px, 24vw, 300px);
+  padding: clamp(24px, 3vw, 40px);
+  justify-content: center;
+  text-align: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  transform: none;
+  background: linear-gradient(120deg, #edc6b8 0%, #dca2aa 55%, #e5bd94 100%);
+  border-color: #c58e86;
+}
+#waas-benefits .waas-panel h3 {
+  color: #302026;
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+#waas-benefits .waas-panel p { color: #493139; }
 .waas-benefits-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1140,6 +1226,27 @@ main { overflow-wrap: anywhere; }
 }
 
 /* ===== Contact ===== */
+@media (prefers-reduced-motion: no-preference) {
+  #a-propos .section-head.reveal {
+    transform: translateY(12px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  #a-propos .section-head.reveal.is-visible { transform: translateY(0); }
+  #a-propos .timeline.reveal-stagger > .timeline-step {
+    transition-duration: .7s;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  }
+  #a-propos .timeline.is-visible > :nth-child(1) { transition-delay: .2s; }
+  #a-propos .timeline.is-visible > :nth-child(2) { transition-delay: .35s; }
+  #a-propos .timeline.is-visible > :nth-child(3) { transition-delay: .5s; }
+  #a-propos .timeline.is-visible > :nth-child(4) { transition-delay: .65s; }
+  #a-propos .timeline::before {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.1s ease-in-out .2s;
+  }
+  #a-propos .timeline.is-visible::before { clip-path: inset(0 0 0 0); }
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
@@ -1267,8 +1374,6 @@ main { overflow-wrap: anywhere; }
 }
 .review-form .field textarea {
   line-height: 1.65rem;
-  background-image: repeating-linear-gradient(transparent 0, transparent calc(1.65rem - 1px), var(--border-soft) calc(1.65rem - 1px), var(--border-soft) 1.65rem);
-  background-origin: content-box;
 }
 .review-form .field input:focus,
 .review-form .field textarea:focus { outline: 2px solid var(--primary); outline-offset: 4px; }
