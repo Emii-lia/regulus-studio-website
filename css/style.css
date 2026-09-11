@@ -1339,7 +1339,7 @@ main { overflow-wrap: anywhere; }
   .contact-grid > .project-form { max-width: 620px; }
 }
 @media (max-width: 599px) {
-  .hero h1 { font-size: 1.65rem; }
+  .hero h1 { font-size: 1.65rem; margin-bottom: 24px; }
   .hero h1 em {
     display: block;
     margin-top: 12px;
