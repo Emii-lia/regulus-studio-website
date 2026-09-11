@@ -742,8 +742,17 @@ main { overflow-wrap: anywhere; }
     padding: 18px 20px;
   }
 
+  .waas-editorial-header {
+    text-align: center;
+  }
+
   .waas-editorial-header h2 {
     font-size: 1.6rem;
+  }
+
+  .waas-editorial-header .section-lead {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
